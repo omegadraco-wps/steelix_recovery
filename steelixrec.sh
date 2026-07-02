@@ -51,6 +51,7 @@ cp "$DONOR_FILE" "$WORKING_FILE"
 echo "⚙️  Injecting target serial and purging old attestation data..."
 sudo vpd -f "$WORKING_FILE" -i RO_VPD -s "serial_number"="$TARGET_SN"
 sudo vpd -f "$WORKING_FILE" -i RO_VPD -d attested_device_id
+sudo vpd -f "$WORKING_FILE" -i RO_VPD -d stable_device_secret_DO_NOT_SHARE
 
 # 5. Disable Software Write-Protection on the chip
 echo "🔓 Disabling software write-protection..."
