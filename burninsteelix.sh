@@ -5,8 +5,13 @@ if [ "$EUID" -ne 0 ]; then
   echo "❌ Error: Please run this script with sudo (e.g., sudo bash deploy_repair.sh)"
   exit 1
 fi
+# Update the download path inside your burninsteelix.sh script to look like this:
+if [ ! -f "bios.bin" ]; then
+  echo "📥 Downloading bios.bin from repository..."
+  curl -L -o bios.bin "https://raw.githubusercontent.com/omegadraco-wps/steelix_recovery/main/bios.bin"
+fi
 
-DONOR_FILE="donor_bios.bin"
+DONOR_FILE="bios.bin"
 WORKING_FILE="machine_ready.bin"
 
 echo "================================================="
